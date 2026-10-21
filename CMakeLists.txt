@@ -16,7 +16,15 @@ endif()
 
 add_library(AeroVistaConfig STATIC
     include/aerovista/config/ConfigJson.h
+    include/aerovista/config/IgConfig.h
+    include/aerovista/config/HostConfig.h
+    include/aerovista/config/EngineChannelConfig.h
+    include/aerovista/config/EntityCatalog.h
     src/ConfigJson.cpp
+    src/IgConfig.cpp
+    src/HostConfig.cpp
+    src/EngineChannelConfig.cpp
+    src/EntityCatalog.cpp
 )
 add_library(aerovista::config ALIAS AeroVistaConfig)
 
