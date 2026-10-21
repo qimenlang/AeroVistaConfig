@@ -43,3 +43,20 @@ target_compile_features(AeroVistaConfig PUBLIC cxx_std_17)
 if(MSVC)
     target_compile_options(AeroVistaConfig PRIVATE /utf-8)
 endif()
+
+# 库自带测试。本仓库与 config 独立构建默认打开；只链接库的工程可关掉。
+# 不依赖 vsg / sync。父工程须先提供 Catch2::Catch2WithMain；独立顶层工程否则 FetchContent。
+option(AEROVISTA_CONFIG_BUILD_TESTS "Build AeroVistaConfig Catch2 tests" ON)
+if(AEROVISTA_CONFIG_BUILD_TESTS)
+    if(NOT TARGET Catch2::Catch2WithMain)
+        include(FetchContent)
+        FetchContent_Declare(
+            Catch2
+            GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+            GIT_TAG v3.15.2
+            GIT_SHALLOW TRUE
+        )
+        FetchContent_MakeAvailable(Catch2)
+    endif()
+    add_subdirectory(tests)
+endif()
