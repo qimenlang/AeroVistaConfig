@@ -4,7 +4,7 @@
 
 #include <aerovista/config/EngineChannelConfig.h>
 
-#include "Common.h"
+#include "Testutil.h"
 
 #include <string>
 

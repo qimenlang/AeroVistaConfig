@@ -1,7 +1,7 @@
 set(TARGET_NAME aerovistaConfigTests)
 
 add_executable(${TARGET_NAME}
-    Common.h
+    Testutil.h
     HostConfigTests.cpp
     EngineChannelConfigTests.cpp
     EntityCatalogTests.cpp

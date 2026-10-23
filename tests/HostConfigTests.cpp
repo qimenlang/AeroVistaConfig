@@ -2,7 +2,7 @@
 
 #include <aerovista/config/HostConfig.h>
 
-#include "Common.h"
+#include "Testutil.h"
 
 #include <string>
 

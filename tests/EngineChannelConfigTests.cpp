@@ -3,9 +3,8 @@
 
 #include <aerovista/config/EngineChannelConfig.h>
 
-#include "Common.h"
+#include "Testutil.h"
 
-#include <cmath>
 #include <string>
 
 using aerovista::config::EngineChannelConfig;
@@ -23,21 +22,6 @@ namespace
         R"("viewDefinition": { "vfov": 30.0, "near": 1.0, "far": 1000.0, "window": { "posX": 0, "posY": 0, "width": 640, "height": 480 } })";
     const char* kMinimalModel = R"("model": "models/lz.vsgt")";
 
-    std::string jsonIgConfig(int udpRecv = 8003)
-    {
-        return std::string(R"("igConfig": { "udpRecvPort": )") + std::to_string(udpRecv) +
-               R"(, "hostAddr": "127.0.0.1", "hostTcpPort": 8100, "hostUdpRecvPort": 8000 })";
-    }
-
-    bool nearlyEqual(double a, double b)
-    {
-        return std::abs(a - b) <= 1e-9;
-    }
-
-    bool offsetEquals(const OffsetDeg& a, const OffsetDeg& b)
-    {
-        return nearlyEqual(a.yaw, b.yaw) && nearlyEqual(a.pitch, b.pitch) && nearlyEqual(a.roll, b.roll);
-    }
 } // namespace
 
 // =============================================================================

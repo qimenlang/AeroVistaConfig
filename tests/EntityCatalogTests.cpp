@@ -4,7 +4,7 @@
 #include <aerovista/config/EngineChannelConfig.h>
 #include <aerovista/config/EntityCatalog.h>
 
-#include "Common.h"
+#include "Testutil.h"
 
 #include <cstdint>
 #include <string>
@@ -286,25 +286,6 @@ TEST_CASE("loadEntitiesFile accepts pose with ellipsoid half absent",
     REQUIRE(entities[0].hasPoseLocal);
     REQUIRE_FALSE(entities[0].hasPoseEllipsoid);
 }
-
-namespace
-{
-    const EntityAuthorityRow* findRow(const std::vector<EntityAuthorityRow>& rows, std::uint16_t entityId)
-    {
-        for (const EntityAuthorityRow& row : rows)
-        {
-            if (row.entityId == entityId)
-                return &row;
-        }
-        return nullptr;
-    }
-
-    bool poseIsZero(const aerovista::config::EntityAuthorityPose& pose)
-    {
-        return pose.lat == 0.0 && pose.lon == 0.0 && pose.alt == 0.0 && pose.yawDeg == 0.0 && pose.pitchDeg == 0.0 &&
-               pose.rollDeg == 0.0;
-    }
-} // namespace
 
 // =============================================================================
 // Host 子集按 initialEntityState 给出两行（实体与运动控制设计.md §11，码 ENT-04-table-init）。
